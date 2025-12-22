@@ -1,13 +1,12 @@
 import { FlatCompat } from "@eslint/eslintrc";
-import tseslint from "typescript-eslint";
-// @ts-ignore -- no types for this plugin
 import drizzle from "eslint-plugin-drizzle";
+import tseslint from "typescript-eslint";
 
 const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
 });
 
-export default tseslint.config(
+const config = tseslint.config(
   {
     ignores: [".next"],
   },
@@ -29,23 +28,11 @@ export default tseslint.config(
         "warn",
         { prefer: "type-imports", fixStyle: "inline-type-imports" },
       ],
-      "@typescript-eslint/no-unused-vars": [
-        "warn",
-        { argsIgnorePattern: "^_" },
-      ],
+      "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_" }],
       "@typescript-eslint/require-await": "off",
-      "@typescript-eslint/no-misused-promises": [
-        "error",
-        { checksVoidReturn: { attributes: false } },
-      ],
-      "drizzle/enforce-delete-with-where": [
-        "error",
-        { drizzleObjectName: ["db", "ctx.db"] },
-      ],
-      "drizzle/enforce-update-with-where": [
-        "error",
-        { drizzleObjectName: ["db", "ctx.db"] },
-      ],
+      "@typescript-eslint/no-misused-promises": ["error", { checksVoidReturn: { attributes: false } }],
+      "drizzle/enforce-delete-with-where": ["error", { drizzleObjectName: ["db", "ctx.db"] }],
+      "drizzle/enforce-update-with-where": ["error", { drizzleObjectName: ["db", "ctx.db"] }],
     },
   },
   {
@@ -57,5 +44,7 @@ export default tseslint.config(
         projectService: true,
       },
     },
-  },
+  }
 );
+
+export default config;
