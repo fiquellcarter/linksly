@@ -31,7 +31,11 @@ const mono = Geist_Mono({
 
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
-    <html lang="en" className={cn("scroll-smooth antialiased", sans.variable, serif.variable, mono.variable)}>
+    <html
+      lang="en"
+      data-theme="dracula"
+      data-scroll-behavior="smooth"
+      className={cn("scroll-smooth antialiased", sans.variable, serif.variable, mono.variable)}>
       <body>
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
