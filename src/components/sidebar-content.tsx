@@ -4,6 +4,7 @@ import { ChartNoAxesGantt, Folders, GalleryVerticalEnd, Inbox, Plus } from "luci
 import Link from "next/link";
 import { useRef } from "react";
 
+import AddBookmarkDialog from "~/components/add-bookmark-dialog";
 import AddCollectionDialog from "~/components/add-collection-dialog";
 import { cn } from "~/lib/utils";
 import { api } from "~/trpc/react";
@@ -16,6 +17,7 @@ const navigations = [
 const SidebarContent = () => {
   const { data: collections = [] } = api.collection.list.useQuery();
 
+  const addBookmarkDialogRef = useRef<HTMLDialogElement | null>(null);
   const addCollectionDialogRef = useRef<HTMLDialogElement | null>(null);
 
   return (
@@ -75,13 +77,15 @@ const SidebarContent = () => {
             <button
               type="button"
               data-tip="Add Bookmark"
-              className="is-drawer-close:tooltip is-drawer-close:tooltip-right is-drawer-close:btn-square btn btn-primary">
+              className="is-drawer-close:tooltip is-drawer-close:tooltip-right is-drawer-close:btn-square btn btn-primary"
+              onClick={() => addBookmarkDialogRef.current?.showModal()}>
               <Plus className="my-1.5 inline-block" />
               <span className="is-drawer-close:hidden">Add Bookmark</span>
             </button>
           </li>
         </ul>
       </div>
+      <AddBookmarkDialog ref={addBookmarkDialogRef} />
       <AddCollectionDialog ref={addCollectionDialogRef} />
     </div>
   );
