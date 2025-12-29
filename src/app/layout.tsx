@@ -33,7 +33,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <html
       lang="en"
-      data-theme="dracula"
+      data-theme="symphony"
       data-scroll-behavior="smooth"
       className={cn("scroll-smooth antialiased", sans.variable, serif.variable, mono.variable)}>
       <body>

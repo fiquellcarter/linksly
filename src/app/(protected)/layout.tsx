@@ -15,7 +15,7 @@ const ProtectedLayout = async ({ children }: PropsWithChildren) => {
   }
 
   return (
-    <div className="drawer lg:drawer-open">
+    <div className="drawer lg:drawer-open typography">
       <input type="checkbox" id="sidebar" className="drawer-toggle" />
       <div className="drawer-content">
         <div className="container max-w-full">
