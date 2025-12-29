@@ -7,6 +7,7 @@ export const collection = pgTable(
     id: d.integer("id").primaryKey().generatedByDefaultAsIdentity(),
     name: d.text("name").notNull(),
     description: d.text("description"),
+    slug: d.text("slug").notNull(),
     userId: d
       .text("user_id")
       .notNull()

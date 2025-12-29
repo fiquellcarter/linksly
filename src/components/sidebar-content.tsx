@@ -3,7 +3,6 @@
 import { ChartNoAxesGantt, Folders, GalleryVerticalEnd, Inbox, Plus } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
-import { kebabCase } from "string-ts";
 
 import AddCollectionDialog from "~/components/add-collection-dialog";
 import { cn } from "~/lib/utils";
@@ -50,7 +49,7 @@ const SidebarContent = () => {
           {collections.map((collection, idx) => (
             <li key={idx}>
               <Link
-                href={`/c/${kebabCase(collection.name)}`}
+                href={`/c/${collection.slug}`}
                 role="button"
                 data-tip={collection.name}
                 className={cn(
